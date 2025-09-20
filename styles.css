@@ -1,0 +1,506 @@
+:root {
+  --bg: #0a0c0d;
+  --surface: #101415;
+  --text: #e6f2f1;        /* основний текст на темному фоні */
+  --muted: #b7c8c8;       /* приглушений текст на темному фоні */
+  --card: #ffffff;
+  --accent: #18c4a0;
+   --accent2: #14bee8;
+  --accent-ink: #053e33;
+  --radius: 14px;
+  --container: 1120px;
+
+  /* нові змінні для світлих карток */
+  --text-on-card: #1a1d1f; 
+  --muted-on-card: #555e63;
+
+  --aurora-move-a: 3s;
+  --aurora-move-b: 28s;
+  --aurora-pulse-a: 6s;
+  --aurora-pulse-b: 8s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0c0d;
+    --surface: #0d1213;
+    --text: #f0f7f7;       /* текст на темному фоні */
+    --muted: #c5d6d6;      /* приглушений на темному фоні */
+    --card: #13191a;
+    --accent: #18c4a0;
+    --accent-ink: #052e27;
+
+    /* для темної теми — щоб картки були теж темні */
+    --text-on-card: #f0f7f7;
+    --muted-on-card: #c5d6d6;
+  }
+}
+
+.card,
+.price,
+.quote,
+.contact,
+#thankYouMessage {
+  color: var(--text-on-card);
+}
+.card p,
+.price p,
+.quote blockquote,
+.contact label,
+.contact .form-note,
+#thankYouMessage p {
+  color: var(--muted-on-card);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: color-mix(in oklab, var(--bg), transparent 35%);
+  border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 70%);
+  --header-height: 64px; /* висота, використовується для позиціонування мобі‑меню */
+}
+.header-inner{
+  display:flex; align-items:center; gap:20px; padding:14px 0;
+}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text)}
+.svg-accent{fill:var(--accent)}
+.nav__toggle{display:none}
+
+.nav__list{display:flex; gap:18px; align-items:center; list-style:none; margin:0; padding:0}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:999px; padding:10px 16px; font-weight:600;
+  border:1px solid color-mix(in oklab, var(--accent), black 8%);
+  background: var(--accent); color:white; text-decoration:none;
+  transition: transform .12s ease, box-shadow .12s ease, background .2s ease;
+}
+.btn:hover{transform:translateY(-1px); box-shadow:0 6px 20px color-mix(in oklab, var(--accent), black 70%)}
+.btn--ghost{background:transparent; color:var(--accent); border:1px solid color-mix(in oklab, var(--accent), black 25%)}
+.btn--sm{padding:8px 12px; font-size:14px}
+.btn--lg{padding:12px 20px}
+.btn--block{width:100%}
+
+.theme-toggle{
+  margin-left:auto; background:transparent; border:1px solid color-mix(in oklab, var(--muted), transparent 40%);
+  border-radius:999px; padding:8px 10px; cursor:pointer; color:var(--muted)
+}
+.theme-toggle__sun{display:inline}
+.theme-toggle__moon{display:none}
+[data-theme="dark"] .theme-toggle__sun{display:none}
+[data-theme="dark"] .theme-toggle__moon{display:inline}
+
+
+.hero--canvas {
+  position: relative;
+  height: 260px;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--accent), transparent 85%), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--surface), transparent 20%), transparent 40%);
+  overflow: hidden;
+}
+.hero--canvas #hero-cubes {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.25;
+}
+.hero--canvas .wave-sep {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; line-height: 0;
+}
+.hero--canvas .wave-sep svg {
+  display: block;
+  width: 100%; height: 100px;
+}
+@media (max-width: 960px){
+  .hero--canvas { height: 180px; }
+  .hero--canvas #hero-cubes { opacity: 0.18; }
+}
+
+.wave-sep--canvas {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  line-height: 0;
+}
+.wave-sep--canvas svg {
+  display: block;
+  width: 100%;
+  height: 120px; /* амплітуда */
+}
+
+.wave-sep--flipX svg {
+  transform: scaleX(-1);
+}
+
+
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--accent), transparent 85%), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--surface), transparent 20%), transparent 40%);
+}
+
+/* Canvas на фоні hero */
+#hero-cubes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.25; /* щоб не перебив текст */
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1; /* текст завжди поверх анімації */
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 40px;
+  padding: 72px 0;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 960px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 24px;
+  }
+  #hero-cubes {
+    opacity: 0.18; /* трохи тихіше на мобільних */
+  }
+}
+
+.hero h1{font-size: clamp(34px, 5vw, 56px); line-height:1.1; margin:0 0 10px}
+.lead{font-size: clamp(16px, 2vw, 18px); color:var(--muted); margin:0 0 18px}
+.grad{
+  background: conic-gradient(from 180deg, #12eab9, #18c4a0, #8ff3da, #12eab9);
+  -webkit-background-clip:text; color:transparent;
+}
+.hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin:20px 0}
+.trust{display:flex; gap:16px; padding:0; margin:16px 0 0; list-style:none; color:var(--muted); font-size:14px}
+
+.hero__media{position:relative; min-height:320px}
+.blob{
+  position:absolute; inset:0 0 0 0; border-radius:40px; filter:blur(30px);
+  background: radial-gradient(300px 300px at 20% 20%, #18c4a0 25%, transparent 70%),
+              radial-gradient(260px 260px at 80% 40%, #6ee7d1 20%, transparent 70%);
+  opacity:.18;
+}
+.hero__card{
+  position:absolute; right:10%; top:18%;
+  background: var(--card); color: var(--text); border-radius: var(--radius);
+  padding:14px 16px; box-shadow:0 20px 60px rgba(0,0,0,.18); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+}
+.hero__card span{display:block; font-size:12px; color:var(--muted)}
+.hero__card strong{font-size:18px}
+.hero__card--alt{right:24%; top:56%}
+
+.wave-sep {
+  line-height: 0;
+  overflow: hidden;
+}
+.wave-sep svg {
+  display: block;
+  width: 100%;
+  height: 80px; /* низька хвиля */
+}
+
+
+.section{padding:72px 0}
+.section--alt{background: color-mix(in oklab, var(--surface), transparent 70%);
+  border: none;}
+.section__header{display:grid; gap:8px; max-width:800px; margin:0 auto 28px; text-align:center}
+.section__header p{color:var(--muted); margin:0}
+
+.grid{display:grid; gap:20px}
+.cards{grid-template-columns:repeat(3, 1fr)}
+.card{
+  background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius); padding:22px;
+}
+.card h3{margin-top:0}
+.list{padding-left:18px; margin:10px 0 0}
+
+.work{display:grid; gap:20px}
+.work__item{
+  display:grid; grid-template-columns: .9fr 1.1fr; gap:20px;
+  background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius); overflow:hidden;
+}
+.work__img{min-height:220px; background:
+  linear-gradient(135deg, #18c4a0, #8ff3da 70%),
+  url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;}
+.work__img--2{background:
+  linear-gradient(135deg, #8ff3da, #18c4a0 70%),
+  url('https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;}
+.work__txt{padding:22px; color: var(--text-on-card);}
+.tag{display:inline-block; font-size:12px; color:#fff; background:var(--accent); border-radius:999px; padding:4px 8px; margin-right:6px}
+
+.steps{counter-reset:step; display:grid; gap:12px; max-width:760px; margin:0 auto; padding:0; color: var(--text-on-card)}
+.steps li{list-style:none; background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%); border-radius: var(--radius); padding:16px 18px}
+.steps li strong{font-weight:700}
+
+.stack{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
+.stack li{padding:8px 12px; border-radius:999px; background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%)}
+
+.prices{grid-template-columns:repeat(3, 1fr)}
+.price{
+  background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius); padding:22px; display:flex; flex-direction:column; gap:12px
+}
+.price__num{font-weight:800; font-size:24px; margin:0}
+.featured{border:2px solid var(--accent); position:relative}
+.featured::after{content:"Рекомендовано"; position:absolute; top:-12px; right:16px; background:var(--accent); color:#fff; padding:4px 8px; border-radius:6px; font-size:12px}
+
+.quotes{grid-template-columns:repeat(2, 1fr)}
+.quote{
+  background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius); padding:20px
+}
+.quote blockquote{margin:0 0 8px}
+
+.contact{
+  background: var(--card); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius); padding:20px
+}
+.form-grid{grid-template-columns:repeat(2, 1fr)}
+label{display:flex; flex-direction:column; gap:8px; font-weight:600}
+input, textarea{
+  width:100%; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  background: transparent; padding:12px 14px; font: inherit; color:var(--text)
+}
+.full{grid-column:1/-1}
+.form-actions{display:flex; align-items:center; gap:16px; margin-top:12px}
+.form-note{color:var(--muted); margin:0}
+
+.site-footer{
+  border-top:1px solid color-mix(in oklab, var(--muted), transparent 70%);
+  background: color-mix(in oklab, var(--surface), transparent 70%);
+}
+.footer-inner{display:flex; gap:20px; align-items:center; justify-content:space-between; padding:22px 0}
+.footer-links{display:flex; gap:14px; list-style:none; margin:0; padding:0}
+
+@media (max-width: 960px){
+  .hero__inner{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .work__item{grid-template-columns:1fr}
+  .prices{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+
+  /* покращене мобільне меню: фіксуємо бургер в хедері і робимо overlay меню */
+  .nav__toggle{
+    display:inline-flex;
+    margin-left:auto;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    background: transparent;      /* прибрали світлий фон */
+    border: none;                 /* прибрали рамку */
+    border-radius:10px;
+    z-index:100;
+    position:relative;
+    cursor:pointer;
+    padding:0;
+    color:transparent;
+    overflow:visible;
+  }
+
+  /* три чіткі білі смуги: ::before = середня, ::after = верх+низ через box-shadow */
+  .nav__toggle::before,
+  .nav__toggle::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:20px;
+    height:2px;
+    background:#fff;             /* чіткий білий колір смуг */
+    border-radius:1px;
+    transform-origin:center;
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    will-change: transform, opacity;
+    transform: translate(-50%,-50%);
+  }
+
+  /* другий псевдоелемент малює верх і низ через box-shadow */
+  .nav__toggle::after{
+    box-shadow: 0 -8px 0 #fff, 0 8px 0 #fff;
+  }
+
+  /* стан відкритого меню -> хрестик */
+  .nav__toggle[aria-expanded="true"]::before{
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"]::after{
+    transform: translate(-50%,-50%) rotate(-45deg);
+    box-shadow: none; /* прибираємо додаткові смуги, щоб було два діагоналі */
+  }
+
+  /* зберігаємо доступність/контраст при фокусі */
+  .nav__toggle:focus{ outline: 2px solid rgba(255,255,255,0.12); outline-offset:2px; border-radius:10px; }
+  
+  .nav__list{
+    position:fixed;
+    top: calc(var(--header-height,64px) + 10px);
+    left:16px;
+    right:16px;
+    margin:0 auto;
+    max-width:420px;
+    display:none;
+    flex-direction:column;
+    gap:12px;
+    padding:14px;
+    background: var(--card);
+    border-radius:12px;
+    border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+    z-index:65;
+  }
+  .nav__list.open{ display:flex; }
+
+  .nav__list a{ padding:10px 12px; display:block; border-radius:8px; color:var(--text-on-card) }
+  .nav__list a.btn--sm{ align-self:stretch }
+}
+
+/* === FIXES === */
+
+/* 1. Відступи у мобільній версії */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 28px; /* більше "повітря" з боків */
+  }
+}
+
+/* 2. Темний текст у білих блоках (усюди, не тільки моб) */
+.card,
+.price,
+.quote,
+contact,
+.hero__card {
+  --text: #1a1d1f;   /* насичений темно-сірий для заголовків і основного тексту */
+  --muted: #555e63;  /* виразний для підписів і менш важливого тексту */
+  color: var(--text);
+}
+
+.card p,
+.price p,
+.quote blockquote,
+.contact label,
+.contact .form-note,
+.hero__card span {
+  color: var(--muted);
+}
+/* Hero cubes background */
+#hero-cubes{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  opacity:.22;           /* щоб не “кричало” */
+  mix-blend-mode: normal;/* можна спробувати 'screen' або 'overlay' */
+}
+@media (max-width: 640px){
+  #hero-cubes{ opacity:.18; } /* трохи тихіше на мобільних */
+}
+
+/* === Aurora: легке полярне сяйво для сторінки вакансій === */
+.aurora::before,
+.aurora::after{
+  content: "";
+  position: fixed;
+  inset: -20% -30% -40% -30%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(84px);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+/* верхній шар — ніжне акцентне світіння */
+.aurora::before{
+  background: radial-gradient(600px 300px at 12% 25%,
+    color-mix(in srgb, var(--accent), white 40%) 0%,
+    transparent 45%);
+  animation: auroraMoveA var(--aurora-move-a) linear infinite,
+             auroraPulseA var(--aurora-pulse-a) ease-in-out infinite;
+}
+
+/* нижній шар — глибше, інший відтінок для градієнту */
+.aurora::after{
+  background: radial-gradient(720px 420px at 82% 72%,
+    color-mix(in srgb, var(--accent2, var(--accent)), white 20%) 0%,
+    transparent 40%);
+  filter: blur(110px);
+  opacity: 0.65;
+  animation: auroraMoveB var(--aurora-move-b) linear infinite,
+             auroraPulseB var(--aurora-pulse-b) ease-in-out infinite;
+}
+
+/* Піднімаємо контент поверх ефекту */
+.page-vacancies .container,
+.page-vacancies .header-inner,
+.page-vacancies .site-footer {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* Анімації руху і пульсу */
+@keyframes auroraMoveA {
+  0%   { transform: translateX(-8%) translateY(-2%) rotate(-6deg) scale(1); }
+  50%  { transform: translateX(6%) translateY(3%) rotate(2deg) scale(1.02); }
+  100% { transform: translateX(-8%) translateY(-2%) rotate(-6deg) scale(1); }
+}
+@keyframes auroraMoveB {
+  0%   { transform: translateX(10%) translateY(2%) rotate(4deg) scale(1); }
+  50%  { transform: translateX(-6%) translateY(-4%) rotate(-2deg) scale(1.03); }
+  100% { transform: translateX(10%) translateY(2%) rotate(4deg) scale(1); }
+}
+@keyframes auroraPulseA {
+  0%   { opacity: 0.7; }
+  50%  { opacity: 0.95; }
+  100% { opacity: 0.7; }
+}
+@keyframes auroraPulseB {
+  0%   { opacity: 0.55; }
+  50%  { opacity: 0.8; }
+  100% { opacity: 0.55; }
+}
+
+/* Менше навантаження на мобільних — зменшуємо інтенсивність */
+@media (max-width: 640px) {
+  .aurora::before{ filter: blur(64px); opacity:0.72; inset: -12% -18% -20% -18%; }
+  .aurora::after{ filter: blur(78px); opacity:0.5; inset: -8% -12% -16% -12%; }
+}
+
+/* Повага до reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .aurora::before,
+  .aurora::after { animation: none; }
+}
+
+

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Determine — IT Company</title>
+  <meta name="description" content="Сучасна IT-компанія: розробка, підтримка продуктів, вихід на ринок, аудит, UX, DevOps." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Determine — IT Company" />
+  <meta property="og:description" content="Сучасна IT-компанія: розробка, підтримка продуктів, вихід на ринок, аудит, UX, DevOps." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-cover.jpg" />
+  <meta name="theme-color" content="#18c4a0" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="aurora page-home">
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Determine Home">
+        <!-- Simple logomark -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="6" class="svg-accent"/>
+          <path d="M7 12h10M12 7v10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Determine</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Меню</button>
+        <ul id="menu" class="nav__list">
+          <li><a href="#services">Послуги</a></li>
+          <!-- <li><a href="#work">Портфоліо</a></li> -->
+          <li><a href="#process">Процес</a></li>
+          <!-- <li><a href="#stack">Технології</a></li> -->
+          <li><a href="#pricing">Пакети</a></li>
+          <li><a href="vacancies.html">Вакансії</a></li>
+          <li><a href="#contact" class="btn btn--sm">Зв’язатися</a></li>
+        </ul>
+      </nav>
+
+      <!-- <button class="theme-toggle" aria-label="Перемкнути тему">
+        <span class="theme-toggle__sun" aria-hidden="true">☀️</span>
+        <span class="theme-toggle__moon" aria-hidden="true">🌙</span>
+      </button> -->
+    </div>
+  </header>
+
+  <main>
+
+ <!-- HERO CANVAS -->
+<section class="hero hero--canvas">
+  <canvas id="hero-cubes" aria-hidden="true"></canvas>
+</section>
+
+<!-- Дзеркальна по горизонталі хвиля -->
+<div class="wave-sep wave-sep--flipX">
+  <svg viewBox="0 0 1440 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="hero-wave-flipX" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--accent)" />
+        <stop offset="100%" stop-color="var(--surface)" />
+      </linearGradient>
+    </defs>
+    <path d="M0,100 
+             C360,-40 1080,190 1440,80 
+             L1440,250 
+             C1080,190 360,290 0,220 
+             Z" fill="url(#hero-wave-flipX)" />
+  </svg>
+</div>
+
+
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <h1>Розробляємо <span class="grad">продукти</span>, що зростають</h1>
+      <p class="lead">Від ідеї до масштабу: дизайн, інженерія, DevOps та підтримка. Time-to-market без хаосу.</p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--lg">Обговорити проєкт</a>
+        <a href="#pricing" class="btn btn--ghost btn--lg">Дивитися пакети</a>
+      </div>
+      <ul class="trust">
+        <li>99.9% Uptime</li>
+        <li>ISO-friendly процеси</li>
+        <li>Senior-команда</li>
+      </ul>
+    </div>
+    <div class="hero__media" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="hero__card">
+        <span>Go Live</span>
+        <strong>від 19 днів до MVP</strong>
+      </div>
+      <div class="hero__card hero__card--alt">
+        <span>Спринт</span>
+        <strong>2 тижні = артифакт</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Хвиля після Hero (з більшою амплітудою) -->
+<div class="wave-sep">
+  <svg viewBox="0 0 1440 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="hero-wave" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--accent)" />
+        <stop offset="100%" stop-color="var(--surface)" />
+      </linearGradient>
+    </defs>
+    <path d="M0,100 
+             C360,-40 1080,190 1440,80 
+             L1440,250 
+             C1080,190 360,290 0,220 
+             Z" fill="url(#hero-wave)" />
+  </svg>
+</div>
+
+
+
+
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2>Послуги</h2>
+          <p>Повний цикл для B2C/B2B: Web, Mobile, Cloud, AI інтеграції.</p>
+        </header>
+
+        <div class="grid cards">
+          <article class="card">
+            <h3>Продуктова розробка</h3>
+            <p>Discovery, UX/UI, архітектура та розробка web / mobile. CI/CD з першого дня.</p>
+            <ul class="list">
+              <li>React / Next.js / React Native</li>
+              <li>Node.js / Python / Go</li>
+              <li>Design systems</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Підтримка та масштабування</h3>
+            <p>Observability, перфоманс-аудит, оптимізація інфраструктури та витрат.</p>
+            <ul class="list">
+              <li>Kubernetes, Docker, Terraform</li>
+              <li>SLI/SLO, алерти, on-call</li>
+              <li>Cost & perf tuning</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Go-to-Market</h3>
+            <p>Аналітика, трекінг, A/B-тести, експерименти, growth-лійки.</p>
+            <ul class="list">
+              <li>Product analytics</li>
+              <li>Experimentation</li>
+              <li>CRM & CDP інтеграції</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- WORK CASES -->
+    <!-- <section id="work" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2>Кейси</h2>
+          <p>Добираємо 3–5 релевантних прикладів під вашу нішу.</p>
+        </header>
+
+        <div class="work">
+          <article class="work__item">
+            <div class="work__img" role="img" aria-label="IoT моніторинг парку пристроїв"></div>
+            <div class="work__txt">
+              <h3>IoT Dashboard</h3>
+              <p>Єдина панель моніторингу для 120k пристроїв. 99.95% uptime, 40% економії на інфраструктурі.</p>
+              <span class="tag">React</span><span class="tag">Go</span><span class="tag">K8s</span>
+            </div>
+          </article>
+
+          <article class="work__item">
+            <div class="work__img work__img--2" role="img" aria-label="FinTech мобільний застосунок"></div>
+            <div class="work__txt">
+              <h3>FinTech App</h3>
+              <p>KYC/AML, миттєві платежі, модуль ризик-скорингу. 0→20k MAU за 3 місяці.</p>
+              <span class="tag">React Native</span><span class="tag">Node.js</span><span class="tag">GCP</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- PROCESS -->
+    <section id="process" class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2>Як ми працюємо</h2>
+          <p>Прозоро, ітеративно, з чіткими артефактами на кожному етапі.</p>
+          <p>Підбираємо стек під задачі бізнесу, а не навпаки.</p>
+        </header>
+        <ol class="steps">
+          <li><strong>Discovery (1–2 тижні):</strong> воркшопи, пріоритезація, дорожня карта.</li>
+          <li><strong>MVP (від 3 тижнів):</strong> дизайн-система, перша версія, аналітика.</li>
+          <li><strong>Scale:</strong> перформанс, безпека, SRE, експерименти.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <!-- <section id="stack" class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2>Технології</h2>
+          <p>Підбираємо стек під задачі бізнесу, а не навпаки.</p>
+        </header>
+        
+      </div>
+    </section> -->
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <header class="section__header">
+          <h2>Пакети</h2>
+          <p>Прозорі моделі співпраці: фікс, time & material, або dedicated team.</p>
+        </header>
+        <div class="grid prices">
+          <article class="price">
+            <h3>Discovery Sprint</h3>
+            <!-- <p class="price__num">€2 900</p> -->
+            <ul class="list">
+              <li>1–2 тижні воркшопів</li>
+              <li>UX wireframes</li>
+              <li>Технічна карта</li>
+            </ul>
+            <a href="#contact" class="btn btn--block">Старт</a>
+          </article>
+          <article class="price featured">
+            <h3>MVP Boost</h3>
+            <!-- <p class="price__num">від €9 900</p> -->
+            <ul class="list">
+              <li>Команда 3–5 людей</li>
+              <li>CI/CD, аналітика</li>
+              <li>Запуск 4–8 тижнів</li>
+            </ul>
+            <a href="#contact" class="btn btn--block">Обговорити</a>
+          </article>
+          <article class="price">
+            <h3>Scale Care</h3>
+            <!-- <p class="price__num">від €3 500/міс</p> -->
+            <ul class="list">
+              <li>SRE / DevOps</li>
+              <li>Моніторинг, A/B</li>
+              <li>Оптимізація витрат</li>
+            </ul>
+            <a href="#contact" class="btn btn--block">Зв’язатися</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REWIEW TESTIMONIALS -->
+    <!-- <section class="section section--alt">
+      <div class="container">
+        <header class="section__header">
+          <h2>Відгуки</h2>
+          <p>Що кажуть фаундери та керівники продуктів.</p>
+        </header>
+        <div class="grid quotes">
+          <figure class="quote">
+            <blockquote>“З ними time-to-market скоротився вдвічі. Чіткі домовленості та якість.”</blockquote>
+            <figcaption>Олена П., COO</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>“Нарешті з’явилась спостережність і передбачуваність релізів.”</blockquote>
+            <figcaption>Марк Д., CTO</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <header class="section__header">
+      <h2>Готові до старту?</h2>
+      <p>Опишіть задачу — повернемося з планом і оцінкою протягом дня.</p>
+    </header>
+
+    <!-- Прихований iframe -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <!-- Форма -->
+    <form id="contactForm"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSdk0wsSRouwI-nBM1haL6Bn93eJCezYtdgSNItBpUKfT_aRFQ/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      class="contact">
+
+      <div class="grid form-grid">
+        <label>
+          <span>Ваше ім’я</span>
+          <input type="text" name="entry.1705664819" required placeholder="Ім’я" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="entry.1226107973" required placeholder="you@company.com" />
+        </label>
+        <label class="full">
+          <span>Повідомлення</span>
+          <textarea name="entry.324662805" rows="5" required placeholder="Коротко про цілі, строки та бюджет…"></textarea>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn--lg" type="submit">Надіслати</button>
+        <p class="form-note">Або напишіть у <a href="https://t.me/lamgroupx" aria-label="Telegram">Telegram</a></p>
+      </div>
+    </form>
+
+    <!-- Повідомлення після відправки -->
+    <div id="thankYouMessage" style="display:none; margin-top:20px; padding:20px; background:var(--card); border-radius:var(--radius); box-shadow:0 10px 25px rgba(0,0,0,.1); text-align:center;">
+      <h3>✅ Дякуємо!</h3>
+      <p>Ваша заявка успішно відправлена. Ми зв’яжемося з вами протягом дня.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Determine. Усі права захищено.</p>
+      <ul class="footer-links">
+        <li><a href="#">Політика конфіденційності</a></li>
+        <li><a href="#">Умови</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
