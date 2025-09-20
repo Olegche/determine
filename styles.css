@@ -242,6 +242,50 @@ a:hover{text-decoration:underline}
 .hero__card span{display:block; font-size:13px; color:var(--muted-on-card)}
 .hero__card strong{font-size:20px; display:block; color:var(--text-on-card); line-height:1.1}
 
+/* Зробити секцію "Як ми працюємо" читабельною як секція contact */
+#process .section__header {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  margin: 0 auto 18px;
+  text-align: center; /* як contact */
+}
+#process .section__header h2 {
+  color: var(--text); /* чіткий заголовок у обох темах */
+}
+#process .section__header p {
+  color: var(--muted); /* приглушений, але читабельний опис */
+}
+
+/* Робимо кожен крок як окрему картку, як contact форма */
+#process .steps {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 14px;
+}
+#process .steps li {
+  background: var(--card);
+  color: var(--text-on-card); /* темний текст на світлому, білий на темному */
+  border: 1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Заголовки у кроках — більш помітні */
+#process .steps li strong {
+  display: inline-block;
+  color: var(--text-on-card);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
 /* Кнопки усередині карток — зберігаємо контраст */
 .price .btn,
 .card .btn {
@@ -443,7 +487,7 @@ input, textarea{
 .card,
 .price,
 .quote,
-.contact,
+contact,
 .hero__card {
   color: var(--text-on-card);
 }
