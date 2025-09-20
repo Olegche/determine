@@ -11,8 +11,8 @@
   --container: 1120px;
 
   /* нові змінні для світлих карток */
-  --text-on-card: #1a1d1f; 
-  --muted-on-card: #555e63;
+  --text-on-card: #d0d9df; 
+  --muted-on-card: #ced7dc;
 
   --aurora-move-a: 3s;
   --aurora-move-b: 28s;
