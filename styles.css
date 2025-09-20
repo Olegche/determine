@@ -1,18 +1,18 @@
 :root {
   --bg: #0a0c0d;
   --surface: #101415;
-  --text: #e6f2f1;        /* основний текст на темному фоні */
-  --muted: #b7c8c8;       /* приглушений текст на темному фоні */
+  --text: #e6f2f1;
+  --muted: #b7c8c8;
   --card: #ffffff;
   --accent: #18c4a0;
-   --accent2: #14bee8;
+  --accent2: #14bee8;
   --accent-ink: #053e33;
   --radius: 14px;
   --container: 1120px;
 
-  /* нові змінні для світлих карток */
-  --text-on-card: #d0d9df; 
-  --muted-on-card: #ced7dc;
+  /* світлі картки — текст темний для читабельності */
+  --text-on-card: #1a1d1f;    /* темний основний текст на світлих картках */
+  --muted-on-card: #666e73;   /* приглушений текст на картках */
 
   --aurora-move-a: 3s;
   --aurora-move-b: 28s;
@@ -33,6 +33,24 @@
     /* для темної теми — щоб картки були теж темні */
     --text-on-card: #f0f7f7;
     --muted-on-card: #c5d6d6;
+  }
+
+  /* Гарантуємо: на темних картках основний текст — білий, підписи — приглушені */
+  .card,
+  .price,
+  .quote,
+  .contact,
+  .hero__card {
+    color: #ffffff;
+  }
+
+  .card p,
+  .price p,
+  .quote blockquote,
+  .contact label,
+  .contact .form-note,
+  .hero__card span {
+    color: var(--muted-on-card);
   }
 }
 
@@ -396,15 +414,13 @@ input, textarea{
   }
 }
 
-/* 2. Темний текст у білих блоках (усюди, не тільки моб) */
+/* 2. Темний текст у білих блоках (усюди) — виправлений селектор */
 .card,
 .price,
 .quote,
-contact,
+.contact,
 .hero__card {
-  --text: #1a1d1f;   /* насичений темно-сірий для заголовків і основного тексту */
-  --muted: #555e63;  /* виразний для підписів і менш важливого тексту */
-  color: var(--text);
+  color: var(--text-on-card);
 }
 
 .card p,
@@ -413,7 +429,7 @@ contact,
 .contact label,
 .contact .form-note,
 .hero__card span {
-  color: var(--muted);
+  color: var(--muted-on-card);
 }
 /* Hero cubes background */
 #hero-cubes{
