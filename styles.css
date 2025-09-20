@@ -215,7 +215,9 @@ a:hover{text-decoration:underline}
 .lead{font-size: clamp(16px, 2vw, 18px); color:var(--muted); margin:0 0 18px}
 .grad{
   background: conic-gradient(from 180deg, #12eab9, #18c4a0, #8ff3da, #12eab9);
-  -webkit-background-clip:text; color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .hero__cta{display:flex; gap:12px; flex-wrap:wrap; margin:20px 0}
 .trust{display:flex; gap:16px; padding:0; margin:16px 0 0; list-style:none; color:var(--muted); font-size:14px}
@@ -229,12 +231,35 @@ a:hover{text-decoration:underline}
 }
 .hero__card{
   position:absolute; right:10%; top:18%;
-  background: var(--card); color: var(--text); border-radius: var(--radius);
-  padding:14px 16px; box-shadow:0 20px 60px rgba(0,0,0,.18); border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  background: var(--card); color: var(--text-on-card); /* <- змінено */
+  border-radius: var(--radius);
+  padding:18px 20px; /* трохи більше простору */
+  box-shadow:0 20px 60px rgba(0,0,0,.12); /* м'якший тіньовий контраст */
+  border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  min-width: 220px; /* щоб кнопки не сідали */
+  text-align:center;
 }
-.hero__card span{display:block; font-size:12px; color:var(--muted)}
-.hero__card strong{font-size:18px}
-.hero__card--alt{right:24%; top:56%}
+.hero__card span{display:block; font-size:13px; color:var(--muted-on-card)}
+.hero__card strong{font-size:20px; display:block; color:var(--text-on-card); line-height:1.1}
+
+/* Кнопки усередині карток — зберігаємо контраст */
+.price .btn,
+.card .btn {
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border: none;
+}
+
+/* Додатково: важливі секції (Послуги, Пакети) — чіткі заголовки і текст */
+#services .card h3,
+#pricing .price h3 {
+  color: var(--text-on-card);
+}
+#services .card p,
+#pricing .price p,
+#pricing .price .list li {
+  color: var(--muted-on-card);
+}
 
 .wave-sep {
   line-height: 0;
@@ -423,12 +448,63 @@ input, textarea{
   color: var(--text-on-card);
 }
 
+.card h3,
+.price h3,
+.quote h3 {
+  color: var(--text-on-card);
+}
+
 .card p,
 .price p,
 .quote blockquote,
 .contact label,
 .contact .form-note,
 .hero__card span {
+  color: var(--muted-on-card);
+}
+
+/* Списки та кроки — чіткий темний колір */
+.list li,
+.steps li {
+  color: var(--text-on-card);
+}
+
+/* Підсилюємо заголовки у steps */
+.steps li strong {
+  color: var(--text-on-card);
+  font-weight: 700;
+}
+
+/* Hero cards (Go Live / Спринт) — більші, чіткіші, темний текст на світлому фоні */
+.hero__card{
+  position:absolute; right:10%; top:18%;
+  background: var(--card); color: var(--text-on-card); /* <- змінено */
+  border-radius: var(--radius);
+  padding:18px 20px; /* трохи більше простору */
+  box-shadow:0 20px 60px rgba(0,0,0,.12); /* м'якший тіньовий контраст */
+  border:1px solid color-mix(in oklab, var(--muted), transparent 60%);
+  min-width: 220px; /* щоб кнопки не сідали */
+  text-align:center;
+}
+.hero__card span{display:block; font-size:13px; color:var(--muted-on-card)}
+.hero__card strong{font-size:20px; display:block; color:var(--text-on-card); line-height:1.1}
+
+/* Кнопки усередині карток — зберігаємо контраст */
+.price .btn,
+.card .btn {
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border: none;
+}
+
+/* Додатково: важливі секції (Послуги, Пакети) — чіткі заголовки і текст */
+#services .card h3,
+#pricing .price h3 {
+  color: var(--text-on-card);
+}
+#services .card p,
+#pricing .price p,
+#pricing .price .list li {
   color: var(--muted-on-card);
 }
 /* Hero cubes background */
